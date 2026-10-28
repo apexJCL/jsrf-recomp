@@ -1,0 +1,127 @@
+# game.toml: what xboxrecomp-cli needs to know about Jet Set Radio Future. The CLI reads
+# it on every command; every key and its default is in the CLI's
+# docs/manifest.md. Written by `xbr new`; the CLI never writes it again.
+schema = 1
+
+[game]
+name = "Jet Set Radio Future"
+slug = "skates"
+
+[xbe]
+path = "game_files/default.xbe"
+# The certificate's title ID: `package` refuses a dump with another one.
+title_id = 0x5345000A
+# Known dumps (sha256 of default.xbe); empty accepts any dump.
+sha256 = []
+
+[cli]
+# The xboxrecomp-cli ./skates runs: the bootstrap clones it at this release
+# tag (or commit) when it finds none; with both, the commit locks the tag.
+# `skates pins refresh` prints the newest release.
+tag = "v0.13.0"
+commit = "33390f64995b00ac7003a764b154b7855de3f4bd"
+url = "https://github.com/apexJCL/xboxrecomp-cli.git"
+
+[toolkit]
+# `skates setup` clones it into external/xboxrecomp at this commit. A
+# release tag pins it too: tag = "..." (branch is then optional).
+url = "https://github.com/apexJCL/xboxrecomp.git"
+branch = "blinx2/portability"
+tag = "blinx2-v0.7.0"
+commit = "178657afe161329724f7a9bf03b4be82e42c70f6"
+
+[toolchain]
+# The llvm-mingw release the windows target cross-compiles with, on every host.
+llvm_mingw = "20260922"
+
+[pipeline]
+# Stamped into every generated file: fixed for the life of the game.
+game_name = "Jet Set Radio Future"
+gen = "src/recomp/gen"
+out = "analysis"
+# Function starts the disassembler missed (ICALL failures at runtime).
+seeds = ["config/seed_functions.json"]
+# The toolkit's icall_feedback database belongs to another game: off.
+icall_seeds = false
+exclude_manual = "src/recomp_manual.c"
+
+[pipeline.disasm]
+# Every code section: without the XDK sections (D3D, DSOUND, XGRPH, ...)
+# there are no function boundaries there, and their internal calls become
+# stubs. A title whose XBE flags data sections executable sets
+# text_only = true and names its code sections in extra_sections.
+text_only = false
+
+[build]
+# The CMake target and file name: build-win/skates_recomp.exe
+exe = "skates_recomp"
+# windows builds on every host (llvm-mingw); macos builds on a Mac (Apple
+# clang). Drop one to stop `build` offering it.
+targets = ["windows", "macos"]
+# Passed on every packaging configure so a cache cannot keep a non-stock
+# value: the enhancements layer on, every key stock unless a player's
+# config.toml or the environment says otherwise.
+stock_cmake = ["-DXBOXRECOMP_ENHANCE=ON", "-DXBOXRECOMP_APU_DSP=ON"]
+
+# How much memory one generated-code compile job takes sets how many run
+# at once. Unset, it is estimated (140 MiB per MB of the largest gen/
+# file); after a build, `skates doctor` shows the measured peak on its
+# `build jobs` line, and that figure goes here.
+# [build.resources]
+# gen_job_mib = 1200
+# tool_mib = 1700        # the largest single pipeline tool (disasm)
+# tool_step = "disasm"
+
+[data]
+game_files = "game_files"
+
+[golden]
+# The golden scenarios. Their reference frames and the hdd seed they boot on
+# (game output, and the user's save game) stay under the ignored analysis/:
+# never in git, never published, Mac and Deck only.
+json = "config/golden/golden.json"
+frames = "analysis/golden/frames"
+
+# Packaging (a private bundle with your own dump inside) is opt-in. The
+# game's own files are in packaging/: launch.env.default.<target>,
+# <target>/README.part and config.default.toml. macos: JetSetRadioFuture.app
+# in a DMG, with the Homebrew dylibs the Mac build links (otool -L
+# build/skates_recomp) bundled; the launcher and Info.plist are the game's
+# own, in packaging/macos/. See docs/manifest.md, [package].
+[package]
+app = "JetSetRadioFuture"
+product = "skates-recomp"
+targets = ["windows", "steamos", "macos"]
+brew = ["sdl3", "openssl", "libepoxy"]
+content = "packaging"
+templates = "packaging"
+icon = "xbe"
+
+# The public repo (the CLI's docs/layout.md): `skates public init` once per
+# clone, then each round `skates public export` and the push it prints. The
+# private notes, the patterns and the rewrite rules stay out of it.
+[public]
+url = "git@github.com:apexJCL/jsrf-recomp.git"
+author = "carlos <4037632+apexJCL@users.noreply.github.com>"
+
+# The player's build wizard (needs [package]): `skates wizard build` makes
+# its Windows, macOS and Linux downloads for a release tag, and
+# .github/workflows/release-wizard.yml attaches them to the release. See
+# the CLI's docs/wizard.md.
+# [wizard]
+# repo = "https://github.com/OWNER/skates-recomp.git"   # [public] url, https form
+# icon = "packaging/wizard-icon.png"
+# [[wizard.option]]
+# key = "scale"
+# label = "Render scale"
+# kind = "range"
+# min = 1
+# max = 4
+# default = 1
+# config = "render.scale"
+# [[wizard.option]]
+# key = "fullscreen"
+# label = "Fullscreen"
+# kind = "bool"
+# default = false
+# config = "present.fullscreen"

@@ -1,0 +1,490 @@
+{
+  "about": "Golden frames for skates golden (JSRF). Metal runs dump by flip (fb_dump_at); D3D11 under Proton via skates bench golden. Frames are not bit-exact across runs, so a frame passes on an exact pixel hash or else on the tolerant compare below. Reference PNGs live in analysis/golden/frames/ (gitignored, never published). Hashes are SHA-256 of width,height (LE u32) + RGB rows top-down. The hdd fixture analysis/golden/fixtures/hdd-deck-20261021 (gitignored, never published) is the user's own save from the Deck install, UDATA save sha256 ed3379679efc8556d6b4a6ea7bae405e8306ecc460b19bdc1a32aca3da2d4e51 (Game Data 1: Chapter 1, play time 00:00). golden run copies it to the run's hdd/ (RECOMP_HDD_DIR=@seed:), so no run writes to it.",
+  "compare": {
+    "method": "exact pixel hash, else per-channel mean abs diff and share of pixels off by more than pixel_tol in any channel; also the worst 64x64 tile's share of such pixels",
+    "pixel_tol": 8,
+    "max_channel_mae": 1.0,
+    "max_bad_fraction": 0.01,
+    "max_tile_bad_fraction": 0.6,
+    "max_pace_diff": 0.1
+  },
+  "env": {
+    "RECOMP_PB_BACKEND": "d3d11",
+    "RECOMP_TRACE": "flip",
+    "RECOMP_KEYBOARD": "0",
+    "RECOMP_MOUSE": "0",
+    "RECOMP_CONFIG": "none",
+    "RECOMP_MENU": "0",
+    "RECOMP_OVERLAY_STATS": "0",
+    "RECOMP_RENDER_SCALE": "1",
+    "RECOMP_PRESENT_PACING": "spin",
+    "RECOMP_PRESENT_SURFACE": "window"
+  },
+  "scenarios": {
+    "title": {
+      "env": {
+        "RECOMP_HDD_DIR": "@seed:analysis/golden/fixtures/hdd-deck-20261021"
+      },
+      "about": "Boot to the title screen with no input: the SEGA and Smilebit logos, then the JSRF title and its PLEASE PRESS START prompt (about 43 s and 51 s on a quiet Mac).",
+      "seconds": 70,
+      "anchors": {
+        "title": {
+          "after_flip": 1000,
+          "min_batches": 500,
+          "why": "the title screen's 3D city: the first flip with 500+ batches after the logos and the 16-batch fade (2 -> 506 at flip 2461 in Metal explore run e9)"
+        }
+      },
+      "dump_slack": 60,
+      "dump_slack_why": "the title anchor sat at flip 2461 in all 3 Metal runs (2026-10-24); 60 is room for a slower host",
+      "frames": [
+        {
+          "name": "title-logo",
+          "dump": 45,
+          "note": "the JSRF title about 4 s after it appears",
+          "anchor": {
+            "event": "title",
+            "ref_flip": 2461,
+            "why": "the recording run's anchor (Metal golden run 20261024-084926-metal-title)",
+            "ref_pace": 53.44
+          },
+          "references": [
+            {
+              "label": "d3d11",
+              "sha256": "d4413288e91e4adc8d9dfc3c9652f35581263944db086dba88885886a8df712f",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 2461,
+              "pace": 47.9,
+              "from": "20261024-093913 flip 2701 (anchor 2461)"
+            },
+            {
+              "label": "metal",
+              "sha256": "3418200c631226be6c49ee3345e96230a5b428455550c4b4a21902608d116766",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 2461,
+              "pace": 53.44
+            }
+          ]
+        },
+        {
+          "name": "title-prompt",
+          "dump": 53,
+          "note": "the title with PLEASE PRESS START",
+          "anchor": {
+            "event": "title",
+            "ref_flip": 2461,
+            "why": "the recording run's anchor (Metal golden run 20261024-084926-metal-title)",
+            "ref_pace": 54.13
+          },
+          "references": [
+            {
+              "label": "d3d11",
+              "sha256": "bc8791f0f5c31cc7adfbc293d2d4ab8202bbb792e7ea55cfd02f9d82c4ef7fca",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 2461,
+              "pace": 52.74,
+              "from": "20261024-093913 flip 3181 (anchor 2461)"
+            },
+            {
+              "label": "metal",
+              "sha256": "212998c1d6455a22adcc4594ee74fb6361ae62e65d5c25dc6e5a510deed38d0f",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 2461,
+              "pace": 54.13
+            }
+          ]
+        }
+      ]
+    },
+    "garage": {
+      "env": {
+        "RECOMP_HDD_DIR": "@seed:analysis/golden/fixtures/hdd-deck-20261021",
+        "RECOMP_DEBUG": "pad_script=90000:start:200,95000:start:800,98500:ldown:100,100500:a:150,105500:a:150,108000:lleft:100,109500:a:400,128000:a:150"
+      },
+      "about": "Load Game with the user's save into the Garage (Chapter 1). The pad script runs on wall time from the first pad poll: at 90 s Start leaves the attract demo for the title, at 95 s a long Start opens the menu, ldown to Load Game, A opens the Load screen, A picks Game Data 1, lleft to YES, A loads (105.5, 108 and 109.5 s: the Load screen opens 64 flips after its A, which takes up to 1.83 s on the Deck when the title backdrop is heavy, so an A at 104 s caught the YES/NO prompt in garage-load); at 128 s A picks Yoyo at character select, then his intro and control in the Garage (about 144 s). Start only counts once the prompt shows and the menu times out after 10-13 s, so this needs a quiet host: on a loaded Mac the presses miss their screens. The hdd fixture analysis/golden/fixtures/hdd-deck-20261021 (gitignored, never published) is the user's own save from the Deck install, UDATA save sha256 ed3379679efc8556d6b4a6ea7bae405e8306ecc460b19bdc1a32aca3da2d4e51 (Game Data 1: Chapter 1, play time 00:00). golden run copies it to the run's hdd/ (RECOMP_HDD_DIR=@seed:), so no run writes to it.",
+      "followups": "The Dogenzaka leg (exit the Garage, Dogenzaka's intro cutscene, LT toward the city, a short stroll) is the dogenzaka scenario, a recorded play replayed by flip. The durable fix for this scenario's press races (garage-load's YES/NO prompt, garage-intro's anchor jitter and two views) is flip-timed presses (pad_script f<flip>): the later 1.5 s shift only widens the margin, and a host pace change can close it again.",
+      "seconds": 200,
+      "anchors": {
+        "load-menu": {
+          "after_flip": 5100,
+          "max_batches": 40,
+          "why": "the Load screen opening (274 -> 2, then 29 batches) after A on Load Game, at ~101-102 s wall time. after_flip 5100 skips the attract demo's drops, which fall on fixed flips (4142 and 5043 in all 7 Metal runs; 5043 stays above 40 batches in some Deck runs). It was 5600, but the Deck reaches the Load screen at flip 5299-5859 (runs 094819, 094307, 092233; Metal 6038-6085), since the presses follow wall time and the Deck boots and renders slower"
+        },
+        "charsel": {
+          "after": "load-menu",
+          "min_batches": 150,
+          "why": "character select after the save loads (flip 6623 in e9)"
+        },
+        "intro": {
+          "after": "charsel",
+          "max_batches": 100,
+          "why": "the first flip of Yoyo's intro cutscene: character select (118+ batches, 150-330) drops to 72-91 when the A lands. The intro then runs on flips: the garage anchor is 533 flips on in all 6 Metal runs (2026-10-24). The A waits on wall time, so the flip moves with the run's pace (7486-7794). 80 was too close to the intro's first flips (72-91) and its crossing wandered by ~10 flips"
+        },
+        "garage": {
+          "after": "intro",
+          "min_batches": 170,
+          "why": "control in the Garage after the intro's fade (2-16 batches); the idle holds 179 batches (flip 8327 in e9)"
+        }
+      },
+      "dump_slack": [
+        1100,
+        400
+      ],
+      "dump_slack_why": "[before, after] the reference flip. The presses are on wall time, so every anchor moves with the run's pace: Metal's load-menu falls at 6038-6085 (7 runs), the Deck's at 5299, 5631 and 5859 (runs 094819, 094307, 092233: up to 772 flips before Metal's reference), and every Deck deviation is early (garage-intro's target 26 flips inside a symmetric 900). 1100 before covers that with room, 400 after covers a loaded Mac; the dumps are pruned when the scenario passes. Followup: dump relative to the anchor event, or flip-timed presses (pad_script f<flip>)",
+      "frames": [
+        {
+          "name": "garage-load",
+          "dump": 103,
+          "note": "the Load screen, Game Data 1 (Chapter 1, 00:00)",
+          "anchor": {
+            "event": "load-menu",
+            "ref_flip": 6071,
+            "why": "the recording run's anchor (Metal golden run 20261024-085334-metal-garage)",
+            "ref_pace": 60.37
+          },
+          "references": [
+            {
+              "label": "d3d11",
+              "sha256": "d774af8d5ee99753aa0211a73ab3f5073e823d4fce199643c64463a89a5e1cef",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 6071,
+              "pace": 60.61,
+              "from": "20261024-095246 flip 5422 (anchor 5312)"
+            },
+            {
+              "label": "metal",
+              "sha256": "fdf4219a6264ca3dc6b2eef181ee1456a5310b175e604f4e991714f4ae6e25df",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 6071,
+              "pace": 60.37
+            }
+          ]
+        },
+        {
+          "name": "garage-charsel",
+          "dump": 115,
+          "note": "character select on Yoyo",
+          "anchor": {
+            "event": "charsel",
+            "ref_flip": 6600,
+            "why": "the recording run's anchor (Metal golden run 20261024-085334-metal-garage)",
+            "ref_pace": 55.84
+          },
+          "references": [
+            {
+              "label": "d3d11",
+              "sha256": "e9aa1379b96edb322c6f6dd77c209718aafc24c07330b74de215e34640176bc0",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 6600,
+              "pace": 55.37,
+              "from": "20261024-094307 flip 6466 (anchor 6165)"
+            },
+            {
+              "label": "metal",
+              "sha256": "907f2c3236f85a558acbc765ffffb10cea224f7da16f2379db7b8ddaeababa32",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 6600,
+              "pace": 55.84
+            }
+          ]
+        },
+        {
+          "name": "garage-intro",
+          "dump": 128,
+          "note": "Yoyo's intro cutscene",
+          "verdict_window": {
+            "flips": 1,
+            "why": "the intro anchor lands one flip either side of the cut from run to run: Deck run 20261027-190337 and Metal run 20261027-165319 failed the target and matched a reference exactly at offset -1 and +1"
+          },
+          "anchor": {
+            "event": "intro",
+            "ref_flip": 7486,
+            "why": "the recording run's anchor (Metal golden run 20261024-085623-metal-garage)",
+            "ref_pace": 59.69
+          },
+          "references": [
+            {
+              "label": "d3d11",
+              "sha256": "45c2a7ba580f0fc31965f09b34b1610d187fa53931503abce1f98499467fd78f",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 7486,
+              "pace": 60.06,
+              "from": "20261024-094819 flip 6998 (anchor 6803)"
+            },
+            {
+              "label": "d3d11-b",
+              "sha256": "0290243f05b4a1ba7baaf83f91dde834950ba2d28e9a78a346d59289e2093411",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 7486,
+              "pace": 60.11,
+              "from": "20261024-095246 flip 6805 (anchor 6610)"
+            },
+            {
+              "label": "metal",
+              "sha256": "8bd028bde44fea8d70fc28f07de10a89ffa5ab8e69a78863d1dab310947d4797",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 7486,
+              "pace": 59.69
+            }
+          ],
+          "views_note": "the stage intro does not always play the same shot at this distance from its anchor: Metal runs r3-r7 and Deck run 094819 show Yoyo standing at the ledge (metal, d3d11); Deck run 095246 shows her mid-trick on the rail (d3d11-b), with the same intro-to-garage span (529 vs 533 flips). Cause not known (a random pick, or the press's phase); a run showing a third view FAILs here, and gets looked at before adding it. Followup: find the cause; the near-equal span points at the A press's phase on a slower host, which a flip-timed press (pad_script f<flip>) would remove. Metal has no b view, so a Metal run playing the rail shot FAILs as a false regression: record metal-b only when one appears"
+        },
+        {
+          "name": "garage-idle",
+          "dump": 140,
+          "note": "Yoyo idle in the Garage, HUD up",
+          "anchor": {
+            "event": "garage",
+            "ref_flip": 8019,
+            "why": "the recording run's anchor (Metal golden run 20261024-085623-metal-garage)",
+            "ref_pace": 49.87
+          },
+          "references": [
+            {
+              "label": "d3d11",
+              "sha256": "86fd3169cd6202cd62f8a3d034f7b9f51d0d75e76b8d10b51a7dd404502a490e",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 8019,
+              "pace": 60.12,
+              "from": "20261024-094819 flip 7718 (anchor 7336)"
+            },
+            {
+              "label": "metal",
+              "sha256": "67e0c8b694b5a6da739f15b24c3f152890e1c30bb369c5e980fdcfa6c3d3da74",
+              "size": [
+                640,
+                480
+              ],
+              "anchor_flip": 8019,
+              "pace": 49.87
+            }
+          ]
+        }
+      ]
+    },
+    "dogenzaka": {
+      "env": {
+        "RECOMP_HDD_DIR": "@seed:analysis/golden/fixtures/hdd-deck-20261021",
+        "RECOMP_DEBUG": "pad_script=@analysis/golden/fixtures/pad/dogenzaka-20261024-143001.pad"
+      },
+      "about": "The user's own play from the title to Dogenzaka, replayed: the pad script analysis/golden/fixtures/pad/dogenzaka-20261024-143001.pad (gitignored, never published; 979 flip-timed steps, sha256 e76a301d7afe8304d6fb805e309fae871a16e9006fa699ac24b10ceab50bc5b7) was recorded with golden play garage --record --no-script on Metal: Start through the title, Load Game, Game Data 1, Yoyo, out of the Garage, Dogenzaka's intro cutscene, LT to face the city at flip 5245, then a stroll with tricks. The replay misses a jump the live play made (the inputs replay faithfully, the game does not land the same), so after it the route is the replay's own, the same in every Metal replay: the frames are what the replay shows, not what the player saw. Steps are flip-timed and the frames plain flip dumps (60*dump+1), no anchors. Same hdd seed as garage. The file is too long for one Windows variable, so the scenario names it (@PATH) and bench golden ships it.",
+      "seconds": 135,
+      "frames": [
+        {
+          "name": "dogenzaka-intro",
+          "dump": 60,
+          "note": "Dogenzaka's intro cutscene, its first line (flip 3601)",
+          "references": [
+            {
+              "label": "d3d11",
+              "sha256": "b05f37e7685c41bfdeba2e00194c9beb4a9a8803b5c61095fbda61f00866195d",
+              "size": [
+                640,
+                480
+              ],
+              "from": "Deck bench golden 20261024-151015 (GE-Proton11-7, borderless)"
+            },
+            {
+              "label": "metal",
+              "sha256": "a3621c8950da8b572aadb34d451490b688ecde06f82f13de2b50a44b96ad7d16",
+              "size": [
+                640,
+                480
+              ],
+              "from": "headless Metal replay ref1; the same bytes in replays m1-m3 and both golden run passes"
+            }
+          ]
+        },
+        {
+          "name": "dogenzaka-control",
+          "dump": 84,
+          "note": "the intro over: 'Cover Dogenzaka Hill in paint!', Yoyo in control (flip 5041)",
+          "references": [
+            {
+              "label": "d3d11",
+              "sha256": "0bfc3bc3f870eb9543fac8f6bc5f0c5125fdb45c472fe7d807501ab668cfc538",
+              "size": [
+                640,
+                480
+              ],
+              "from": "Deck bench golden 20261024-151015 (GE-Proton11-7, borderless)"
+            },
+            {
+              "label": "metal",
+              "sha256": "303351ae0d422f53240fcb56b784832735ab41a2543cb2f1872a7ab02ac124a2",
+              "size": [
+                640,
+                480
+              ],
+              "from": "headless Metal replay ref1; the same bytes in replays m1-m3 and both golden run passes"
+            }
+          ]
+        },
+        {
+          "name": "dogenzaka-city",
+          "dump": 88,
+          "note": "after LT, facing the city street (flip 5281)",
+          "references": [
+            {
+              "label": "d3d11",
+              "sha256": "657e06fb2966a8c9b80eeb02b373b739710f866d88763c0177b38d93ba271c72",
+              "size": [
+                640,
+                480
+              ],
+              "from": "Deck bench golden 20261024-151015 (GE-Proton11-7, borderless)"
+            },
+            {
+              "label": "metal",
+              "sha256": "8be278ffbb8ba7670c40434b1c7f82b762abb32b5ebb89e7ee9ac513d1f097c8",
+              "size": [
+                640,
+                480
+              ],
+              "from": "headless Metal replay ref1; the same bytes in replays m1-m3 and both golden run passes"
+            }
+          ]
+        },
+        {
+          "name": "dogenzaka-stroll",
+          "dump": 114,
+          "note": "the stroll on the sidewalk by the planters (flip 6841)",
+          "references": [
+            {
+              "label": "metal",
+              "sha256": "3b391a2659c2fd0f66f81173d229e6544c569ba3b068ef7c18b07c640cfcef64",
+              "size": [
+                640,
+                480
+              ],
+              "from": "headless Metal replay ref1; the same bytes in replays m1-m3 and both golden run passes"
+            }
+          ],
+          "skip_backends": [
+            "d3d11"
+          ],
+          "skip_why": "the Deck's replay leaves the Metal route after the city frame: loading and the intro take a different number of flips there, so the flip-timed presses land a few flips off and by flip 6841 Yoyo is elsewhere (Deck run 20261024-151015)"
+        },
+        {
+          "name": "dogenzaka-street",
+          "dump": 124,
+          "note": "the stroll, late: the sidewalk toward the sun (flip 7441)",
+          "references": [
+            {
+              "label": "metal",
+              "sha256": "92ca51fe3876b0c2f61b2ddb0e9c76377df39257a8ec8071f61a5040fb85ca99",
+              "size": [
+                640,
+                480
+              ],
+              "from": "headless Metal replay ref1; the same bytes in replays m1-m3 and both golden run passes"
+            }
+          ],
+          "skip_backends": [
+            "d3d11"
+          ],
+          "skip_why": "the Deck's replay leaves the Metal route after the city frame: loading and the intro take a different number of flips there, so the flip-timed presses land a few flips off and by flip 6841 Yoyo is elsewhere (Deck run 20261024-151015)"
+        }
+      ]
+    },
+    "dogenzaka-corn": {
+      "about": "The user's Corn play from the title into Dogenzaka, replayed: the pad script analysis/golden/fixtures/pad/dogenzaka-corn.pad (gitignored, never published; sha256 6b8412079ac52bdb59361dff8fa75df3a364309d85271ee4673a05e3e87ca50f) was recorded on Metal with Corn chosen. On this route the DJ teardown frees the mission buffer the stage still reads; without fix.mission_buffer the load hangs on the loading screen or crashes, so these in-stage frames only appear with the skip taken (one [FIX] mission_buffer ... kept line). Same hdd seed as dogenzaka.",
+      "env": {
+        "RECOMP_HDD_DIR": "@seed:analysis/golden/fixtures/hdd-deck-20261021",
+        "RECOMP_DEBUG": "pad_script=@analysis/golden/fixtures/pad/dogenzaka-corn.pad"
+      },
+      "frames": [
+        {
+          "dump": 70,
+          "name": "dogenzaka-corn-start",
+          "note": "Corn in control: 'Cover Dogenzaka Hill', the Garage arrow (flip 4201)",
+          "references": [
+            {
+              "label": "d3d11",
+              "sha256": "5e63f7dbf13f8c7a6131a973dfe4614d9171f90f548b9dc2a7653c9ad099b3c7",
+              "size": [
+                640,
+                480
+              ],
+              "from": "the Linux/Proton host GE-Proton11-7 D3D11 replay 20261025-114234 (exe f0c57046, bc5b439); the same bytes in 20261025-114448. The Deck was unreachable; the Linux/Proton host runs the Deck refs' Proton"
+            },
+            {
+              "label": "metal",
+              "sha256": "aa88982c3d5f2eb8bb05a44f5f0e6f502a7ca43b2c23fe7c865c25cb34902662",
+              "size": [
+                640,
+                480
+              ],
+              "from": "headless Metal replay 20261025-104240; the same bytes in 20261025-104402"
+            }
+          ]
+        },
+        {
+          "dump": 80,
+          "name": "dogenzaka-corn-street",
+          "note": "Corn standing in the street, traffic passing (flip 4801)",
+          "references": [
+            {
+              "label": "d3d11",
+              "sha256": "7ee34301c29dc7678abc88c7bd2d8d9aeddc0513886dfd4863680d1059dd47fa",
+              "size": [
+                640,
+                480
+              ],
+              "from": "the Linux/Proton host GE-Proton11-7 D3D11 replay 20261025-114234 (exe f0c57046, bc5b439); the same bytes in 20261025-114448. The Deck was unreachable; the Linux/Proton host runs the Deck refs' Proton"
+            },
+            {
+              "label": "metal",
+              "sha256": "a3c717b4e0e974803f76d430030f581b622e19c50ff6dbc3e4c3d19965528f22",
+              "size": [
+                640,
+                480
+              ],
+              "from": "headless Metal replay 20261025-104240; the same bytes in 20261025-104402"
+            }
+          ]
+        }
+      ],
+      "seconds": 110,
+      "skip_backends": [
+        "cpu"
+      ],
+      "skip_why": "CPU is outside the routine gates."
+    }
+  }
+}

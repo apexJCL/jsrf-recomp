@@ -1,0 +1,78 @@
+# Jet Set Radio Future options: every key at its default, and every default
+# draws as stock. present.pacing = "sleep" has no effect until the game is
+# generated with spin waits (tools.recomp --spin-waits); present.surface =
+# "auto" differs from stock only under gamescope, where it means "internal".
+# The game reads this file on each launch, beside its executable; it is
+# never copied, and an update replaces it, so new keys and defaults reach
+# you. Do not edit it: put the keys you change in config/config.toml (copy
+# a line from here), which the game creates with a short comment the first
+# time and never overwrites. Environment variables (RECOMP_*,
+# config/launch.env in a bundle) override both. Reference: the toolkit's
+# docs/runtime/config.md.
+
+[render]
+scale = 1                 # internal resolution factor: 1 (stock 640x480), 2, 3, 4
+                          # (Metal and Direct3D 11; the software renderer
+                          # ignores it)
+aniso = 0                 # anisotropic filtering on mipmapped textures: 0 (stock,
+                          # off) or 2..16 (Metal and Direct3D 11)
+
+[display]
+aspect = "4:3"            # only 4:3 so far
+
+[present]
+filter = "nearest"        # "nearest" (stock), "linear", "integer"
+fullscreen = false        # true: borderless fullscreen at start
+pacing = "sleep"          # "sleep": the frame wait sleeps until the next vblank,
+                          # which saves CPU and battery; the frames are the
+                          # same. "spin" is the console-original timing: the
+                          # wait holds a CPU core, as on the Xbox. No effect
+                          # yet: Jet Set Radio Future is not generated with
+                          # spin waits
+surface = "auto"          # "auto": the frame-sized surface goes to gamescope for
+                          # it to scale when the SteamOS launcher says it runs
+                          # there (Steam's FSR needs scale = 1 on a Deck);
+                          # "window" (the old behaviour) or "internal"
+
+[menu]
+enabled = true            # the in-game menu over the game: F10, Guide+A or
+                          # Back+L3 held 0.4 s opens and closes it, and on
+                          # macOS an Elite's P1 too (XInput has no paddles).
+                          # Steam Deck: SteamOS keeps Guide+A for itself, so
+                          # use Back+L3, or bind R4 to F10 once in Steam
+                          # Input (the game's controller settings > Back Grip
+                          # Buttons > R4 > Keyboard > F10). The game keeps
+                          # running behind it and gets no input. Save writes
+                          # only what you changed to config/config.toml.
+                          # Closed, it changes no frame; the game loses only
+                          # the presses of the chords that open it. false:
+                          # no menu; with the strip off too, no binding
+                          # below is read
+
+[overlay]
+stats = false             # the stats strip in the window's top right corner (fps,
+                          # frame ms, pacing, scale, backend); F3 or the
+                          # menu's Stats page toggles it while you play
+
+[input.actions]
+# Host actions: what the host does, not the game. To change one, put it
+# under [input.actions] in config/config.toml: it replaces this line whole.
+# Reference: the toolkit's docs/runtime/config.md, "Host actions".
+menu.open = ["F10", "guide+a", "paddle1", "back+left_thumb@400"]
+                          # the toolkit's three, plus Back+L3 held 0.4 s for
+                          # hosts that never pass Guide on (the Xbox Game Bar
+                          # on Windows, Steam under Proton). The game ignores
+                          # a lone Back or L3 press in play
+overlay.stats = "F3"      # toggles the stats strip; no key of the game's
+
+[fix]
+dj_stage_word = true      # the stage after the DJ event: use the word cached at
+                          # scene setup when the freed record no longer holds
+                          # a stage word (the Xbox keeps a freed block's contents, this
+                          # build may not). false runs the original read,
+                          # which can load the wrong stage and stall
+mission_buffer = true     # a loader release keeps the mission buffer the
+                          # stage still reads (the Xbox's load timing never
+                          # frees it there, this build's can). false runs the
+                          # original free, which can hang on the loading
+                          # screen or crash

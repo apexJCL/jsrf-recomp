@@ -1,0 +1,508 @@
+[
+  {
+    "start": "0x000348A0",
+    "source": "vtable entry at 0x001EC118 (.data run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00045DB0",
+    "source": "vtable entry at 0x001CA79C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00047470",
+    "source": "vtable entry at 0x001CA498 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00047540",
+    "source": "vtable entry at 0x001CA4A0 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0004EF90",
+    "source": "vtable entry at 0x001CAAFC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00052010",
+    "source": "vtable entry at 0x001CAAC0 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00052050",
+    "source": "vtable entry at 0x001CAACC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00052090",
+    "source": "vtable entry at 0x001CAAE4 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00052CA0",
+    "source": "vtable entry at 0x001F9978 (.data run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0005FD70",
+    "source": "vtable entry at 0x001CB050 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0005FD90",
+    "source": "vtable entry at 0x001CB068 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00060200",
+    "source": "vtable entry at 0x001CB058 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00067E90",
+    "source": "vtable entry at 0x001CB0FC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00070C90",
+    "source": "vtable entry at 0x001CCA44 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00071100",
+    "source": "vtable entry at 0x001CCA8C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00072760",
+    "source": "vtable entry at 0x001CCAEC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000789F0",
+    "source": "vtable entry at 0x001CCD34 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0007BDD0",
+    "source": "vtable entry at 0x001CCEBC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0007BE30",
+    "source": "ICALL failure, Metal run run2 (state table 0x0020D2B8 entry 0, called from 0x0007BDDB; the listing ran a jump table into it)",
+    "observed": true
+  },
+  {
+    "start": "0x0007E360",
+    "source": "vtable entry at 0x001CCFBC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00085480",
+    "source": "vtable entry at 0x001CD0C4 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000864E0",
+    "source": "vtable entry at 0x001CD124 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00096F60",
+    "source": "vtable entry at 0x001CD2A4 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00097350",
+    "source": "vtable entry at 0x001CD430 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000C31B0",
+    "source": "vtable entry at 0x001CDCC8 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000C3D90",
+    "source": "vtable entry at 0x001CDDB8 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000C5910",
+    "source": "vtable entry at 0x001CDFF8 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000C7A70",
+    "source": "vtable entry at 0x001CE210 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000C7D40",
+    "source": "vtable entry at 0x001CE23C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000C7E20",
+    "source": "vtable entry at 0x001CE250 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000CD1E0",
+    "source": "vtable entry at 0x001CE364 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000CDCF0",
+    "source": "vtable entry at 0x001CE3A8 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000D47F0",
+    "source": "vtable entry at 0x001CE20C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000DAA40",
+    "source": "vtable entry at 0x001CE6F4 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000DB330",
+    "source": "vtable entry at 0x001CE6FC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000DBBA0",
+    "source": "vtable entry at 0x001CE788 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000DBD80",
+    "source": "vtable entry at 0x001CE78C (.data run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000E0710",
+    "source": "vtable entry at 0x001CE80C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000E08A0",
+    "source": "vtable entry at 0x001CE810 (.data run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000E7770",
+    "source": "vtable entry at 0x001CEDF4 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000E97F0",
+    "source": "vtable entry at 0x001CEE80 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000E9A40",
+    "source": "vtable entry at 0x001CEE84 (.data run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000EBE70",
+    "source": "vtable entry at 0x001CEF2C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000EC0B0",
+    "source": "vtable entry at 0x001CEF50 (.data run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000F5380",
+    "source": "vtable entry at 0x001CEB08 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000F53E0",
+    "source": "vtable entry at 0x001CEB0C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000F5510",
+    "source": "vtable entry at 0x001CEB20 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000F55A0",
+    "source": "vtable entry at 0x001CEB28 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000F63E0",
+    "source": "vtable entry at 0x001CEB10 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000F6480",
+    "source": "vtable entry at 0x001CEB14 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000F6500",
+    "source": "vtable entry at 0x001CEB18 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000F7F00",
+    "source": "vtable entry at 0x001D077C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x000FC370",
+    "source": "vtable entry at 0x001D1B74 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00100770",
+    "source": "vtable entry at 0x001D1D04 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00101180",
+    "source": "vtable entry at 0x001D1D4C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00101190",
+    "source": "vtable entry at 0x001D1D50 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001011A0",
+    "source": "vtable entry at 0x001D1D54 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00102490",
+    "source": "vtable entry at 0x001D1DDC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00112110",
+    "source": "vtable entry at 0x001D27CC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001145F0",
+    "source": "vtable entry at 0x001D2B44 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00115F40",
+    "source": "vtable entry at 0x001D0804 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001199C0",
+    "source": "vtable entry at 0x001D7B6C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0011A070",
+    "source": "vtable entry at 0x001D7BAC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0012B280",
+    "source": "vtable entry at 0x001DA35C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00134B30",
+    "source": "vtable entry at 0x001DE834 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00134F00",
+    "source": "vtable entry at 0x001DE82C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0013A240",
+    "source": "vtable entry at 0x001DEA6C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0013A340",
+    "source": "vtable entry at 0x001DEA64 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0013B1C0",
+    "source": "ICALL failure, Metal boot log game-20261018-161103.log: thread routine (PsCreateSystemThreadEx ctx1, XREF data_imm 0x0013B411)",
+    "observed": true
+  },
+  {
+    "start": "0x0013B230",
+    "source": "ICALL failure, Metal boot log game-20261018-161103.log: thread routine (PsCreateSystemThreadEx ctx1, XREF data_imm 0x0013B445)",
+    "observed": true
+  },
+  {
+    "start": "0x0013B2A0",
+    "source": "ICALL failure, Metal boot log game-20261018-161103.log: thread routine (PsCreateSystemThreadEx ctx1, XREF data_imm 0x0013B479)",
+    "observed": true
+  },
+  {
+    "start": "0x001519D0",
+    "source": "vtable entry at 0x001E125C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00151A00",
+    "source": "vtable entry at 0x001E1260 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00154520",
+    "source": "vtable entry at 0x001E0F70 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00154540",
+    "source": "vtable entry at 0x001E0F74 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00157300",
+    "source": "vtable entry at 0x001E143C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00159700",
+    "source": "vtable entry at 0x001E1670 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0015B4E0",
+    "source": "vtable entry at 0x001E1534 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0015B650",
+    "source": "vtable entry at 0x001E1560 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0015B6E0",
+    "source": "vtable entry at 0x001E1564 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0015BCD0",
+    "source": "vtable entry at 0x001E1590 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0015BD60",
+    "source": "vtable entry at 0x001E1594 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00161FF0",
+    "source": "vtable entry at 0x001E1988 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00162490",
+    "source": "vtable entry at 0x001E19A0 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00162580",
+    "source": "vtable entry at 0x001E19BC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001629C0",
+    "source": "vtable entry at 0x001E19CC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001629E0",
+    "source": "vtable entry at 0x001E19D0 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0016B9B0",
+    "source": "vtable entry at 0x001E3BF8 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x0016B9D0",
+    "source": "vtable entry at 0x001E3BFC (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00170090",
+    "source": "vtable entry at 0x001E3C70 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001700B0",
+    "source": "vtable entry at 0x001E3C74 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00173160",
+    "source": "vtable entry at 0x001E3D78 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00173180",
+    "source": "vtable entry at 0x001E3D7C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001731A0",
+    "source": "vtable entry at 0x001E3D40 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00173210",
+    "source": "vtable entry at 0x001E3D58 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00173230",
+    "source": "vtable entry at 0x001E3D5C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00173250",
+    "source": "vtable entry at 0x001E3D60 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00173270",
+    "source": "vtable entry at 0x001E3D64 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00173290",
+    "source": "vtable entry at 0x001E3D68 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001732B0",
+    "source": "vtable entry at 0x001E3D6C (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001732D0",
+    "source": "vtable entry at 0x001E3D70 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001732F0",
+    "source": "vtable entry at 0x001E3D74 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00173910",
+    "source": "vtable entry at 0x001E3DD0 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00173930",
+    "source": "vtable entry at 0x001E3DD4 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001739C0",
+    "source": "vtable entry at 0x001E3DD8 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00175170",
+    "source": "vtable entry at 0x001E3ED0 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001773A0",
+    "source": "vtable entry at 0x001E3D44 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001773C0",
+    "source": "vtable entry at 0x001E3D48 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001773E0",
+    "source": "ICALL failure, Metal run run1 (vtable thunk, .rdata vtables 0x001E3D4C..0x001E4000)",
+    "observed": true
+  },
+  {
+    "start": "0x00177400",
+    "source": "vtable entry at 0x001E3DA8 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001775E0",
+    "source": "vtable entry at 0x001E3D54 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00178070",
+    "source": "vtable entry at 0x001E4034 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001780A0",
+    "source": "vtable entry at 0x001E4038 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001780D0",
+    "source": "ICALL failure, Metal boot log game-20261018-161103.log: vtable thunk (mov ecx,[esp+4]; jmp [ecx+0x20]) called before the boot stall",
+    "observed": true
+  },
+  {
+    "start": "0x001783D0",
+    "source": "vtable entry at 0x001E4040 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00178610",
+    "source": "vtable entry at 0x001E4050 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x00178640",
+    "source": "vtable entry at 0x001E4054 (.rdata run of code pointers), 16-byte aligned after nop padding"
+  },
+  {
+    "start": "0x001BCAA3",
+    "source": "ICALL failure, Metal boot log game-20261018-161103.log: XPP init (follows ret 4 at 0x001BCAA0; XPP is not 16-byte aligned)",
+    "observed": true
+  },
+  {
+    "start": "0x001BD274",
+    "source": "ICALL failure, Metal boot log game-20261018-161103.log: XPP timer init (follows ret 0xc at 0x001BD271)",
+    "observed": true
+  },
+  {
+    "start": "0x001BD853",
+    "source": "XPP code no function claims, found by scanning XPP for function ends that start nothing after the pad's two ICALL failures; starts after sub_001BD839's ret"
+  },
+  {
+    "start": "0x001BDE21",
+    "source": "ICALL failure, Metal run runs/jsrf-input/usb-trace4: XAPI USB routine called once the pad answers its XID requests; starts after sub_001BDD97's ret 8",
+    "observed": true
+  },
+  {
+    "start": "0x001BE0B4",
+    "source": "XPP code no function claims, found by scanning XPP for function ends that start nothing after the pad's two ICALL failures; starts after sub_001BE029's ret 8"
+  },
+  {
+    "start": "0x001BE689",
+    "source": "ICALL failure, Metal run runs/jsrf-input/usb-trace3: XAPI USB completion routine reached once the pad is configured; starts after sub_001BE43B's ret 8",
+    "observed": true
+  },
+  {
+    "start": "0x001C213A",
+    "source": "XPP code no function claims, found by scanning XPP for function ends that start nothing after the pad's two ICALL failures; starts after sub_001C204E's ret 8"
+  }
+]

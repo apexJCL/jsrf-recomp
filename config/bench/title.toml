@@ -1,0 +1,98 @@
+# The title-screen benchmark, for `skates bench-matrix`.
+# After the intro (the cards and the movie, ~0-1 batches a flip for ~42 s)
+# the 3D title runs on its own, with no input, for as long as we like:
+# 100 s of it are measured, the first 20 s apart (the GPU clock ramps up).
+
+# An arm is one value per axis, named so.
+arm_id = "s{scale}-dsp{dsp}-{aspect}"
+
+[scene]
+name = "jsrf-title"
+run_s = 160          # RECOMP_WINDOW_QUIT_AFTER: 42 s intro + 100 s + margin
+duration_s = 100
+warmup_s = 20
+
+# The game's own processes, which the quiet wait before a run and the busy
+# watch during it leave out (the default is the exe's name alone).
+quiet_ignore = ["skates_recomp"]
+slow_fps = 50        # the slow_share line: the Deck's slow mode runs under it
+
+[scene.start]
+# The title's first flip has ~500 batches; the movie never reaches 100.
+min_batches = 100
+hold_flips = 30
+fallback_s = 43      # after the first flip, should the batch edge move
+
+[profile]
+hz = 250
+delay_s = 40         # from process start: the sampler covers the title
+# The title's two busy-wait loops: D3D's KickOff spin on the PFB
+# flush bit and CRI ADX's helper spinner. collect reports their share of
+# the profile as the spin share, apart from the real work.
+spin_functions = ["sub_001912A0", "sub_0013B180"]
+
+# A Deck run either opens well or in a slow mode, and the first 20 s show
+# which: 41.0-45.4 fps in a slow run against 56.45-57.45 in a good one
+# without the sampler (41.0-48.85 against 52.8-57.45 over all runs), nothing in
+# between so far. A few runs switch mode after the warm-up, either way, so
+# a good run must also hold a clean steady part: a clean one has 9-17
+# hitches, a slow one 40-530. analyse counts each arm's good and bad.
+[verdict]
+hosts = ["deck"]
+warmup_fps_min = 50
+steady_hitches_max = 30
+
+[[axis]]
+name = "scale"
+values = [1, 2, 3, 4]
+config = "render.scale"
+stock = 1
+display = ["1x", "2x", "3x", "4x"]
+
+[[axis]]
+name = "dsp"
+values = [0, 1]
+env = "RECOMP_APU_DSP"
+stock = 0
+display = ["DSP off", "DSP"]
+
+[[axis]]
+name = "aspect"
+values = ["4:3", "16:9"]
+labels = ["43", "169"]
+config = "display.aspect"   # 16:9 is Hor+
+stock = "4:3"
+display = ["4:3", "16:9"]
+
+[report]
+target_fps = 60
+label = "Title screen, 100 s after the intro"
+
+[report.best]
+priority = ["scale", "dsp"]
+split = ["aspect"]
+prefer = { scale = [4, 3, 2, 1], dsp = [1, 0] }
+
+[report.public]
+readme = "README.md"
+images = "docs/images/bench"
+hosts.deck = { label = "Steam Deck LCD (Proton, D3D11)", slug = "steam-deck" }
+hosts.mac = { label = "Mac, Apple silicon (Metal)", slug = "mac" }
+hosts.windows = { label = "Windows PC (D3D11)", slug = "windows-pc" }
+
+[hosts.mac]
+kind = "local"
+backend = "metal"
+env = { SDL_AUDIODRIVER = "dummy", SDL_AUDIO_DRIVER = "dummy" }   # never sound on the Mac
+
+[hosts.deck]
+kind = "proton"
+backend = "d3d11"
+exclude = ["scale=4"]
+# Under Wine the sampler stops every thread each round (no cycle counter),
+# which costs a few percent at 250 Hz: sample the Deck slower.
+profile = { hz = 100 }
+
+[hosts.windows]
+kind = "windows"
+backend = "d3d11"
