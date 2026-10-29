@@ -56,8 +56,10 @@ the project root. `config.default.toml` (beside the executable,
 copy a line into your `config.toml` to change it, for example
 `scale = 2` under `[render]` to draw at 1280x960. With no `config.toml` the
 game draws as stock. Two defaults are not the layer-free build's:
-`present.pacing = "sleep"` (no effect yet, since Jet Set Radio Future is
-not generated with spin waits; `"spin"` is the console-original timing) and
+`present.pacing = "sleep"` (`"spin"` is the console-original timing; the
+D3D push-buffer kick's wait sleeps instead of holding a CPU core only with
+the toolkit's experimental `RECOMP_DEBUG=kick_event=1`, and spins without
+it) and
 `present.surface = "auto"`, which in SteamOS Game Mode hands gamescope the
 frame-sized surface to scale instead of a window (`"window"` restores that).
 

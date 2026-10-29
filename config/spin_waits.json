@@ -1,0 +1,9 @@
+{
+  "about": "Guest busy-wait loops that tools.recomp --spin-waits lowers. Both sites here carry \"sleep\": \"kick_event\", so they lower to RECOMP_SPIN_WAIT_KICK: they sleep under present.pacing = \"sleep\" only while the walker's kick event wait is on (RECOMP_DEBUG=kick_event=1), and spin otherwise (the toolkit's docs/runtime/config.md). Listed sites only: a listed site that fails the matcher stops the recomp stage. analysis/recomp/spin_waits.json lists every candidate seen.",
+  "auto": false,
+  "sites": [
+    {"va": "0x00191290", "sleep": "kick_event", "note": "D3D KickOff in sub_00191270: while ([regs+0x100410] & 0x10000), the PFB flush bit set just before; the toolkit's ack loop clears it once the walker has caught up, so it sleeps under present.pacing=sleep while the walker's kick event wait is on (RECOMP_DEBUG=kick_event=1) and spins otherwise: with the walker polling, the sleep cost the Deck 3 fps"},
+    {"va": "0x001912E0", "sleep": "kick_event", "note": "D3D KickOff in sub_001912A0 (the push-buffer kick, the main thread's hot spot: the tracker item title profile): the same PFB flush-bit wait as 0x00191290, cleared by the toolkit's ack loop"}
+  ],
+  "exclude": []
+}

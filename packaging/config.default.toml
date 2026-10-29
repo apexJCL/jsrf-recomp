@@ -1,7 +1,6 @@
 # Jet Set Radio Future options: every key at its default, and every default
-# draws as stock. present.pacing = "sleep" has no effect until the game is
-# generated with spin waits (tools.recomp --spin-waits); present.surface =
-# "auto" differs from stock only under gamescope, where it means "internal".
+# draws as stock. present.surface = "auto" differs from stock only under
+# gamescope, where it means "internal".
 # The game reads this file on each launch, beside its executable; it is
 # never copied, and an update replaces it, so new keys and defaults reach
 # you. Do not edit it: put the keys you change in config/config.toml (copy
@@ -23,12 +22,12 @@ aspect = "4:3"            # only 4:3 so far
 [present]
 filter = "nearest"        # "nearest" (stock), "linear", "integer"
 fullscreen = false        # true: borderless fullscreen at start
-pacing = "sleep"          # "sleep": the frame wait sleeps until the next vblank,
-                          # which saves CPU and battery; the frames are the
-                          # same. "spin" is the console-original timing: the
-                          # wait holds a CPU core, as on the Xbox. No effect
-                          # yet: Jet Set Radio Future is not generated with
-                          # spin waits
+pacing = "sleep"          # "sleep": the D3D push-buffer kick's wait sleeps
+                          # instead of holding a CPU core, only with the
+                          # toolkit's experimental RECOMP_DEBUG=kick_event=1;
+                          # without it the wait spins, so this has no effect
+                          # yet. "spin" is the console-original timing: the
+                          # wait holds a CPU core, as on the Xbox
 surface = "auto"          # "auto": the frame-sized surface goes to gamescope for
                           # it to scale when the SteamOS launcher says it runs
                           # there (Steam's FSR needs scale = 1 on a Deck);
