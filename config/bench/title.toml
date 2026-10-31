@@ -53,7 +53,7 @@ display = ["1x", "2x", "3x", "4x"]
 name = "dsp"
 values = [0, 1]
 env = "RECOMP_APU_DSP"
-stock = 0
+stock = 1
 display = ["DSP off", "DSP"]
 
 [[axis]]

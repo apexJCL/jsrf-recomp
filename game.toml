@@ -18,8 +18,8 @@ sha256 = []
 # The xboxrecomp-cli ./skates runs: the bootstrap clones it at this release
 # tag (or commit) when it finds none; with both, the commit locks the tag.
 # `skates pins refresh` prints the newest release.
-tag = "v0.15.0"
-commit = "277c3366aa4fe59ec9271949db83728956be70dd"
+tag = "v0.17.0"
+commit = "af5649d15fedb09eac8fd76f05f55edd39816e42"
 url = "https://github.com/apexJCL/xboxrecomp-cli.git"
 
 [toolkit]
@@ -27,8 +27,8 @@ url = "https://github.com/apexJCL/xboxrecomp-cli.git"
 # release tag pins it too: tag = "..." (branch is then optional).
 url = "https://github.com/apexJCL/xboxrecomp.git"
 branch = "blinx2/portability"
-tag = "blinx2-v0.8.0"
-commit = "e5a7087201cea886b3b5d72e50f5515581920526"
+tag = "blinx2-v0.10.0"
+commit = "a0c51a5c2db4ce0d2dcc4091552fc2d0a0e56f99"
 
 [toolchain]
 # The llvm-mingw release the windows target cross-compiles with, on every host.

@@ -37,8 +37,9 @@ short checkout path such as `C:\g\skates`, with
 The first build is `build-win/skates_recomp.exe`, cross-compiled with llvm-mingw on
 any host, or `build/skates_recomp` with Apple clang on a Mac (Metal). It will
 crash the first time: that is where the port starts.
-The toolkit is built with the DSP device (`-DXBOXRECOMP_APU_DSP=ON` in
-`game.toml`), so configure downloads the prebuilt dsp56300 library; offline,
+The toolkit is built with the DSP device (`-DXBOXRECOMP_APU_DSP=ON`, its
+default and in `game.toml`), and the exe runs it unless `RECOMP_APU_DSP=0`.
+Configure downloads the prebuilt dsp56300 library once per game; offline,
 point `XBOXRECOMP_DSP56300_ARCHIVE` at a local copy of that archive
 (`NOTICE` has its licences).
 `src/recomp_manual.c` takes hand-written overrides, `config/seed_functions.json`

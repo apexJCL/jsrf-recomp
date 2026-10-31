@@ -48,7 +48,7 @@ distribution must carry both.
 Configure downloads the library, pinned by sha256 in the toolkit's
 cmake/dsp56300.cmake. An offline build points XBOXRECOMP_DSP56300_ARCHIVE
 at a local copy of that archive; a failed download stops the configure step.
-The device stays off at run time unless RECOMP_APU_DSP=1.
+The device runs by default; RECOMP_APU_DSP=0 goes back to the stub.
 
 
 Game data
